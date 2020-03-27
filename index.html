@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/ico" href="/img/logo.jpg" />
+  <link rel="icon" type="image/ico" href="./img/logo.jpg" />
   <title>Pham Trong Vo _ Web Deverloper</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Source+Code+Pro&display=swap" rel="stylesheet">
@@ -16,9 +16,9 @@
   <header>
     <div class="border_btn">
       <div class="btn_menu">
-        <span class="tag1"></span>
-        <span class="tag2"></span>
-        <span class="tag3"></span>
+        <span class="tag"></span>
+        <span class="tag"></span>
+        <span class="tag"></span>
       </div>
     </div>
     <div class="header">
@@ -27,34 +27,76 @@
       </div>
       <div class="main_menu">
         <ul class="nav_menu">
-          <li class="nav_item active">
-            <a><i class="fas fa-home"></i><span class="text_item">Home</span></a>
+          <li class="nav_item active nav_home">
+            <a><i class="fas fa-home "></i><span class="text_item">Home</span></a>
           </li>
-          <li class="nav_item">
-            <a><i class="fas fa-school"></i><span class="text_item">Education</span></a>
-          </li>
-          <li class="nav_item">
-            <a><i class="fab fa-react"></i><span class="text_item">Skill</span></a>
-          </li>
-          <li class="nav_item">
-            <a><i class="fab fa-free-code-camp"></i><span class="text_item">Experience</span></a>
-          </li>
-          <li class="nav_item">
+          <li class="nav_item nav_about">
             <a><i class="fas fa-info"></i>About</a>
           </li>
+          <li class="nav_item nav_education">
+            <a><i class="fas fa-school"></i><span class="text_item">Education</span></a>
+          </li>
+          <li class="nav_item nav_skill">
+            <a><i class="fab fa-react"></i><span class="text_item">Skill</span></a>
+          </li>
+          <li class="nav_item nav_experience">
+            <a><i class="fab fa-free-code-camp"></i><span class="text_item">Experience</span></a>
+          </li>
+
         </ul>
       </div>
     </div>
   </header>
-  <section class="ss_home">
-    <div class="text_name">
-      <div class="border_text">
-        <h3 class="txt h3">Pham Trong Vo</h3>
-        <p class="txt p">Front end Developer</p>
-        <a class="btn btn_home">Continue <i class="fas fa-arrow-right"></i></a>
+  <main>
+    <section class="ss_home">
+      <div class="text_name">
+        <div class="border_text">
+          <h3 class="txt h3">Pham Trong Vo</h3>
+          <p class="txt p">Front-end Developer</p>
+          <a class="btn btn_home">Continue <i class="fas fa-arrow-right"></i></a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <section class="ss_about" id="about">
+      <div class="bg_about">
+        <div class="base-info">
+          <div class="info-boder">
+            <ul class="info list-info">
+              <li class="info-item">
+                <i class="far fa-calendar-alt"></i> 17 - 02 - 1995
+              </li>
+              <li class="info-item">
+                <i class="fas fa-home"></i> Văn Sơn _ Đô Lương _ Nghệ An
+              </li>
+              <li class="info-item">
+                <i class="fas fa-phone-alt"></i> 0387764379
+              </li>
+              <li class="info-item">
+                <i class="fas fa-envelope"></i> Trongvo.haui@gmail.com
+              </li>
+              <li class="info-item">
+                <i class="fas fa-map-marker-alt"></i> Nguyên Xá - Minh Khai - Bắc Từ Liêm - Hà Nội
+              </li>
+            </ul>
+            <ul class="info contact">
+              <li class="contact-item"><i class="fab fa-facebook-f"></i></li>
+              <li class="contact-item"><i class="fab fa-google"></i></li>
+              <li class="contact-item"><i class="fab fa-skype"></i></li>
+              <li class="contact-item"><i class="fab fa-github"></i></li>
+            </ul>
+          </div>
+
+
+        </div>
+        <div class="more-info">
+          <div class="info-boder">
+            <p class="txt-info">Bản thân tôi là một người vui vẻ , hòa đồng ,nhiệt tình và năng động.Sở thích của tôi là đọc sách và xem
+              video lúc rảnh rồi .Thích tìm tòi , học hỏi những ngôn ngữ mới.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
   <!-- +++++++++++ Script ++++++++++-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="js/main.js"></script>
