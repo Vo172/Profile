@@ -21,7 +21,7 @@ header {
   width: 300px;
   height: 100vh;
   background: linear-gradient(180deg, #febb6ccc, #e677a0ad);
-  box-shadow: 1px 0px 5px 0px black;
+  box-shadow: 1px 0px 5px 0px #4a3636;
   overflow: hidden;
   transition: width 0.1s;
 }
@@ -110,6 +110,7 @@ header {
 @media only screen and (max-width: 1024px) {
   header {
     width: 0;
+    overflow: hidden;
   }
   .border_btn{
     display: block;
@@ -117,5 +118,21 @@ header {
     height: 50px;
     border-radius: 50%;
     line-height: 50px;
+  }
+}
+@media only screen and (max-width: 768px){
+  .logo_menu{
+    height: 150px;
+    width: 150px;
+  }
+  .img_logo{
+    height: 150px;
+    width: 150px;
+  }
+  .nav_item{
+    line-height: 45px;
+  }
+  .nav_item a{
+    font-size: 13px;
   }
 }
