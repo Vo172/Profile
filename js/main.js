@@ -1,6 +1,14 @@
 $(document).ready(function () {
+  // --- Preload
+  
+  $(window).on('load', function () {
+      $('#preloader').fadeOut(2000, function () {
+          $(this).remove();
+      });
+  });
+  // --- SET click btn menu
   $(".border_btn").click(function () {
-    // SET click btn menu
+    
     if ($("header").css("width") == "0px") {
       $(window).width() > 768 ? $("header").css("width", "300px") : $("header").css("width", "250px");
       $(window).width() > 768 ? $(".ss_home").css("padding-left", "300px") : $("padding-left").css("width", "250px");
