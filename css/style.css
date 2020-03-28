@@ -377,3 +377,9 @@ header {
     width: 100%;
   }
 }
+.top{
+  height: 1px;
+  width: 100%;
+  background-color: red;
+  position: fixed;
+}
