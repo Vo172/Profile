@@ -357,14 +357,27 @@ header {
   }
 }
 @media only screen and (max-width: 768px){
-  .base-info{
+  .ss_about{
+   height: 1008px;
+  }
+  .bg_about{
     width: 100%;
+    position: absolute;
+    height : 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .base-info{
+    position: absolute;
+    width: 100%;
+    max-height: 504px;
+    top :30px;
   }
   .more-info{
+    position: absolute;
     width: 100%;
-    top:100vh;
     height: 100%;
-    margin-bottom: 80px;
-    
+    max-height: 504px;
+    bottom:30px;
   }
 }
