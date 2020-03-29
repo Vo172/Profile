@@ -48,7 +48,9 @@ ul, li {
   height: 60px;
   margin: auto;
 }
-
+.txt-preload{
+  color: white;
+}
 .spinner img {
   width: 100%;
 }
