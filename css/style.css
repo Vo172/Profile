@@ -538,6 +538,12 @@ header {
   font-size: 12px;
   padding: 7px 0;
 }
+h3 i {
+  color:var(--text-active)
+}
+h5 {
+  color: #7d7d7d;
+}
 @media only screen and (max-width: 1024px) {
   .ss_resume {
     margin-left: 0;

@@ -54,11 +54,12 @@ $(document).ready(function () {
       
     }
     else if ($(this).val() == '3') {
+      $(window).width() > 768 ?resume = resume : 1008;
       body.animate({ scrollTop: resume }, '500');
       removeHome();
       removeAboutLeft();
       removeAboutRight();
-      addResumneiden();
+      //addResumneiden();
     }
   });
 
@@ -111,7 +112,8 @@ $(document).ready(function () {
   function addResumneiden(){
     var arrClass = [".edu_title", ".first",".second",".hob_title",".hob_first",".hob_second",".hob_third"]
     for(let i=0;i<7;i++){
-      timeOut(arrClass[i],i*200);
+      console.log(arrClass[i]);
+      timeOut(arrClass[i],i*400);
     }
   }
   async function timeOut(a,b) {
@@ -144,9 +146,9 @@ $(document).ready(function () {
     $(".txt-info").removeClass("animated fadeInRight");
   }
   function addResume(addClass){
-    $(addClass).addClass("animated fadeInUpBig");
+    $(addClass).addClass("animated fadeInUp");
   }
   function removeResume(){
-    $(".ani_item").removeClass("animated fadeInUpBig");
+    $(".ani_item").removeClass("animated fadeInUp");
   }
 });
