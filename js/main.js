@@ -11,7 +11,6 @@ $(document).ready(function () {
       $(window).width() > 768 ? $("header").css("width", "300px") : $("header").css("width", "250px");
       $(window).width() > 768 ? $(".ss_home").css("padding-left", "300px") : $("padding-left").css("width", "250px");
       $(".tag").addClass("humb");
-
     }
     else {
       $("header").css("width", "0px");
@@ -26,56 +25,74 @@ $(document).ready(function () {
   }
   // SET active menu 
   $(".nav_item").click(function () {
-    $(".nav_item").removeClass("active");
-    $(this).addClass("active");
     if ($("header").css("width") !== "0px" && $(window).width() < 1024) {
       $("body").css("position", "relative"),
         $("header").css("width", "0px");
       $(".tag").removeClass("humb");
     }
   })
+  
   // SET duration when click
+
+  var home = $(".ss_home").offset().top;
+  var about = $(".ss_about").offset().top;
+  var resume = $(".ss_resume").offset().top;
   $(".nav_item").click(function () {
-    let about = $(".ss_about").offset().top;
-    let home = $(".ss_home").offset().top;
     if ($(this).val() == '1') {
       body.animate({ scrollTop: home }, '500');
       addHome();
       removeAboutLeft();
       removeAboutRight();
+      removeResume();
     }
-    if ($(this).val() == '2') {
+    else if ($(this).val() == '2') {
       body.animate({ scrollTop: about }, '500');
       removeHome();
       addAboutLeft();
       addAboutRight();
+      removeResume();
+      
+    }
+    else if ($(this).val() == '3') {
+      body.animate({ scrollTop: resume }, '500');
+      removeHome();
+      removeAboutLeft();
+      removeAboutRight();
+      addResumneiden();
     }
   });
 
   // SET duration when scroll and animate
   addHome();
+  body.animate({ scrollTop: 0 }, '500');
   window.onscroll = function () { scrollFunction() };
   function scrollFunction() {
-    let about = $(".ss_about").offset().top;
-    let home = $(".ss_home").offset().top;
-    let top = $(".top").offset().top;
-
-    if (top <= about - 100) {
+    // For Menu
+    var top = $(".top").offset().top;
+    if (top >= 0  && top+300 < about) {
       $(".nav_item").removeClass("active animated flipInX");
-      $(".nav_home").addClass("active");
       $(".nav_home").addClass("active animated flipInX");
+      $(".nav_resume").removeClass("active animated flipInX");
     }
-    else if (top >= about - 100) {
+    else if (top+300 >= about && top+300 < resume) {
       $(".nav_item").removeClass("active animated flipInX");
       $(".nav_about").addClass("active animated flipInX");
+      $(".nav_resume").removeClass("active animated flipInX");
     }
-    if (top <= about - about / 2) {
+    else if(top+300 >= resume){
+      $(".nav_item").removeClass("active animated flipInX");
+      $(".nav_resume").addClass("active animated flipInX");
+    }
+    // For Main
+    if (top >= 0  && top+300 < about) {
       addHome();
+      removeResume();
       removeAboutLeft();
       removeAboutRight();
-    }
-    else if (top >= about - about / 2) {
+    }//- about / 2 = 50% view height
+    else if (top+300 >= about && top+300 < resume) {
       removeHome();
+      removeResume();
       addAboutLeft();
       if ($(window).width() < 768){
         if(top >= about - about / 2 + 504)
@@ -85,6 +102,24 @@ $(document).ready(function () {
         addAboutRight();
       } 
     }
+    else if(top+300 >= resume){
+      removeAboutLeft();
+      removeAboutRight();
+      addResumneiden();
+    }
+  }
+  function addResumneiden(){
+    var arrClass = [".edu_title", ".first",".second",".hob_title",".hob_first",".hob_second",".hob_third"]
+    for(let i=0;i<7;i++){
+      timeOut(arrClass[i],i*200);
+    }
+  }
+  async function timeOut(a,b) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        addResume(a);
+      }, b)
+    });
   }
   function addHome() {
     $(".h3").addClass("animated bounceInDown");
@@ -107,5 +142,11 @@ $(document).ready(function () {
   }
   function removeAboutRight() {
     $(".txt-info").removeClass("animated fadeInRight");
+  }
+  function addResume(addClass){
+    $(addClass).addClass("animated fadeInUpBig");
+  }
+  function removeResume(){
+    $(".ani_item").removeClass("animated fadeInUpBig");
   }
 });
