@@ -46,7 +46,7 @@ $(document).ready(function () {
       body.animate({ scrollTop: about }, '500');
     }
     else if ($(this).val() == '3') {
-      resume = $(window).width() > 768? resume-140 : resume;
+      resume = $(window).width() > 768? $(".ss_resume").offset().top - 140 : resume;
       body.animate({ scrollTop: resume }, '500');
     }
     else if ($(this).val() == '4') {
