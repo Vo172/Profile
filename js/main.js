@@ -37,29 +37,21 @@ $(document).ready(function () {
   var home = $(".ss_home").offset().top;
   var about = $(".ss_about").offset().top;
   var resume = $(".ss_resume").offset().top;
+  var skill = $(".ss_skill").offset().top;
   $(".nav_item").click(function () {
     if ($(this).val() == '1') {
       body.animate({ scrollTop: home }, '500');
-      addHome();
-      removeAboutLeft();
-      removeAboutRight();
-      removeResume();
     }
     else if ($(this).val() == '2') {
       body.animate({ scrollTop: about }, '500');
-      removeHome();
-      addAboutLeft();
-      addAboutRight();
-      removeResume();
-      
     }
     else if ($(this).val() == '3') {
-      $(window).width() > 768 ?resume = resume : 1008;
+      resume = $(window).width() > 768? resume-140 : resume;
       body.animate({ scrollTop: resume }, '500');
-      removeHome();
-      removeAboutLeft();
-      removeAboutRight();
-      //addResumneiden();
+    }
+    else if ($(this).val() == '4') {
+      //resume = $(window).width() > 768? resume : 1008;
+      body.animate({ scrollTop: skill }, '500');
     }
   });
 
@@ -73,16 +65,18 @@ $(document).ready(function () {
     if (top >= 0  && top+300 < about) {
       $(".nav_item").removeClass("active animated flipInX");
       $(".nav_home").addClass("active animated flipInX");
-      $(".nav_resume").removeClass("active animated flipInX");
     }
     else if (top+300 >= about && top+300 < resume) {
       $(".nav_item").removeClass("active animated flipInX");
       $(".nav_about").addClass("active animated flipInX");
-      $(".nav_resume").removeClass("active animated flipInX");
     }
-    else if(top+300 >= resume){
+    else if(top+300 >= resume && top+300 < skill){
       $(".nav_item").removeClass("active animated flipInX");
       $(".nav_resume").addClass("active animated flipInX");
+    }
+    else if(top+300 >= skill){
+      $(".nav_item").removeClass("active animated flipInX");
+      $(".nav_skill").addClass("active animated flipInX");
     }
     // For Main
     if (top >= 0  && top+300 < about) {
@@ -103,23 +97,35 @@ $(document).ready(function () {
         addAboutRight();
       } 
     }
-    else if(top+300 >= resume){
+    else if(top+300 >= resume && top+300 < skill){
       removeAboutLeft();
       removeAboutRight();
+      removeSkill();
       addResumneiden();
+
+    }
+    else if(top+300 >= skill){
+      console.log('here')
+      removeResume();
+      addSkillZoom();
     }
   }
   function addResumneiden(){
-    var arrClass = [".edu_title", ".first",".second",".hob_title",".hob_first",".hob_second",".hob_third"]
+    let arrClass = [".edu_title", ".first",".second",".hob_title",".hob_first",".hob_second",".hob_third"]
     for(let i=0;i<7;i++){
-      console.log(arrClass[i]);
-      timeOut(arrClass[i],i*400);
+      timeOut(addResume,arrClass[i],i*400);
     }
   }
-  async function timeOut(a,b) {
+  function addSkillZoom(){
+    let arrClass = [".skill1",".skill2",".skill3",".skill4",".skill5"];
+    for(let i=0;i<5;i++){
+      timeOut(addSkill,arrClass[i],i*400);
+    }
+  }
+  async function timeOut(fc,a,b) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        addResume(a);
+        fc(a);
       }, b)
     });
   }
@@ -150,5 +156,11 @@ $(document).ready(function () {
   }
   function removeResume(){
     $(".ani_item").removeClass("animated fadeInUp");
+  }
+  function addSkill(addClass){
+    $(addClass).addClass("animated zoomIn");
+  }
+  function removeSkill(){
+    $(".card").removeClass("animated zoomIn");
   }
 });

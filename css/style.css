@@ -483,7 +483,6 @@ header {
   justify-content: space-around;
   width: calc(100% - 300px);
   margin-left: 300px;
-  height: 100vh;
 }
 
 .education, .hobbies {
@@ -548,16 +547,163 @@ h5 {
   .ss_resume {
     margin-left: 0;
     width: 100%;
-    height: 100vh;
   }
 }
 @media only screen and (max-width: 768px) {
   .ss_resume {
     flex-direction: column;
     justify-content: flex-start;  
+    height: 100vh;
     top: calc(100vh + 1008px);
   }
   .education, .hobbies {
     width: 100%;
   }
 }
+/* ========== SKILL ========== */
+.ss_skill{
+  display: flex;
+  position: absolute;
+  width: calc(100% - 300px);
+  margin-left: 300px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  top:calc(200vh + 424px);
+}
+.skill{
+  width: calc(100% - 80px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.skill_ad{
+  width: calc(100% - 80px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.card {
+  position: relative;
+  width:30%;
+  border: 1px solod var(--text-active);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  border-radius: 4px;
+  text-align: center;
+  overflow: hidden;
+  transition: 0.5s;
+}
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .5);
+}
+.percent{
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 20px #000a;
+  background: #fff;
+  z-index: 1000;
+}
+.number{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+} 
+.percent .number h2{
+  color:#777a;
+  font-weight: 700;
+  font-size: 40px;
+  transition: 0.5s;
+}
+.card:hover .percent .number h2{
+  color: var(--text-active);
+  font-size: 30px;
+}
+.percent .number h2 span{
+  font-size: 24px;
+}
+.card:hover .percent .number h2 span{
+  color: var(--text-active);
+}
+.text{
+  position: relative;
+  color: #777777;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+.card:hover .text{
+  color: var(--text-active);
+}
+svg{
+  position: relative;
+  width:150px;
+  height:150px;
+  z-index: 1000;
+}
+svg circle{
+  width: 140px;
+  height: 140px;
+  fill:none;
+  stroke:rgba(40, 255, 156,0);
+  stroke-width: 3;
+  stroke-linecap: round;
+  transform: translate(3px,3px);
+}
+svg circle:nth-child(2){
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+}
+.card:nth-child(1) svg circle:nth-child(2){
+  stroke-dashoffset: calc(440 - (440 * 90 / 100));
+  stroke:#00ff43;
+  transform: (45deg);
+}
+.card:nth-child(2) svg circle:nth-child(2){
+  stroke-dashoffset: calc(440 - (440 * 85 / 100));
+  stroke:#00a1ff;
+}
+.card:nth-child(3) svg circle:nth-child(2){
+  stroke-dashoffset: calc(440 - (440 * 60 / 100));
+  stroke:#ff04f7;
+}
+.skill_ad .card:nth-child(1) svg circle:nth-child(2){
+  stroke-dashoffset: calc(440 - (440 * 50 / 100));
+  stroke:#ffd86e;
+}
+.skill_ad .card:nth-child(2) svg circle:nth-child(2){
+  stroke-dashoffset: calc(440 - (440 * 50 / 100));
+  stroke:#f85454;
+}
+@media only screen and (max-width: 1024px) {
+  .ss_skill {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .ss_skill{
+    top:calc(200vh + 1008px);
+  }
+  .skill,.skill_ad{
+    flex-direction: column;
+  }
+  .card{
+    width: 100%;
+  }
+}
+/*skill 1500,about 1008*/
