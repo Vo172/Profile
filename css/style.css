@@ -608,7 +608,7 @@ h5 {
   border-radius: 50%;
   box-shadow: inset 0 0 20px #000a;
   background: #fff;
-  z-index: 1000;
+  z-index: 9;
 }
 .number{
   position: absolute;
@@ -653,7 +653,7 @@ svg{
   position: relative;
   width:150px;
   height:150px;
-  z-index: 1000;
+  z-index: 9;
 }
 svg circle{
   width: 140px;
@@ -667,26 +667,26 @@ svg circle{
 svg circle:nth-child(2){
   stroke-dasharray: 440;
   stroke-dashoffset: 440;
+  transition: stroke-dashoffset 4s;
 }
 .card:nth-child(1) svg circle:nth-child(2){
-  stroke-dashoffset: calc(440 - (440 * 90 / 100));
+  stroke-dashoffset: calc(440 - (440 * 0 / 100));
   stroke:#00ff43;
-  transform: (45deg);
 }
 .card:nth-child(2) svg circle:nth-child(2){
-  stroke-dashoffset: calc(440 - (440 * 85 / 100));
+  stroke-dashoffset: calc(440 - (440 * 0 / 100));
   stroke:#00a1ff;
 }
 .card:nth-child(3) svg circle:nth-child(2){
-  stroke-dashoffset: calc(440 - (440 * 60 / 100));
+  stroke-dashoffset: calc(440 - (440 * 0 / 100));
   stroke:#ff04f7;
 }
 .skill_ad .card:nth-child(1) svg circle:nth-child(2){
-  stroke-dashoffset: calc(440 - (440 * 50 / 100));
+  stroke-dashoffset: calc(440 - (440 * 0 / 100));
   stroke:#ffd86e;
 }
 .skill_ad .card:nth-child(2) svg circle:nth-child(2){
-  stroke-dashoffset: calc(440 - (440 * 50 / 100));
+  stroke-dashoffset: calc(440 - (440 * 0 / 100));
   stroke:#f85454;
 }
 @media only screen and (max-width: 1024px) {
@@ -707,3 +707,29 @@ svg circle:nth-child(2){
   }
 }
 /*skill 1500,about 1008*/
+/* --------- Projet ---------- */
+.ss_project{
+  display: flex;
+  position: absolute;
+  width: calc(100% - 300px);
+  margin-left: 300px;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  min-height: 100vh;
+  top:calc(300vh + 424px);
+}
+.ss_project h1{
+  color : var(--color_shadow);
+}
+@media only screen and (max-width: 1024px) {
+  .ss_project {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .ss_project{
+    top:calc(200vh + 2508px);
+  }
+}

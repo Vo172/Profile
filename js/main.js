@@ -31,13 +31,14 @@ $(document).ready(function () {
       $(".tag").removeClass("humb");
     }
   })
-  
+
   // SET duration when click
 
   var home = $(".ss_home").offset().top;
   var about = $(".ss_about").offset().top;
   var resume = $(".ss_resume").offset().top;
   var skill = $(".ss_skill").offset().top;
+  var project = $(".ss_project").offset().top;
   $(".nav_item").click(function () {
     if ($(this).val() == '1') {
       body.animate({ scrollTop: home }, '500');
@@ -46,12 +47,16 @@ $(document).ready(function () {
       body.animate({ scrollTop: about }, '500');
     }
     else if ($(this).val() == '3') {
-      resume = $(window).width() > 768? $(".ss_resume").offset().top - 140 : resume;
+      resume = $(window).width() > 768 ? $(".ss_resume").offset().top - 140 : resume;
       body.animate({ scrollTop: resume }, '500');
     }
     else if ($(this).val() == '4') {
       //resume = $(window).width() > 768? resume : 1008;
       body.animate({ scrollTop: skill }, '500');
+    }
+    else if ($(this).val() == '5') {
+      //resume = $(window).width() > 768? resume : 1008;
+      body.animate({ scrollTop: project }, '500');
     }
   });
 
@@ -62,67 +67,75 @@ $(document).ready(function () {
   function scrollFunction() {
     // For Menu
     var top = $(".top").offset().top;
-    if (top >= 0  && top+300 < about) {
+    if (top >= 0 && top + 300 < about) {
       $(".nav_item").removeClass("active animated flipInX");
       $(".nav_home").addClass("active animated flipInX");
     }
-    else if (top+300 >= about && top+300 < resume) {
+    else if (top + 300 >= about && top + 300 < resume) {
       $(".nav_item").removeClass("active animated flipInX");
       $(".nav_about").addClass("active animated flipInX");
     }
-    else if(top+300 >= resume && top+300 < skill){
+    else if (top + 300 >= resume && top + 300 < skill) {
       $(".nav_item").removeClass("active animated flipInX");
       $(".nav_resume").addClass("active animated flipInX");
     }
-    else if(top+300 >= skill){
+    else if (top + 300 >= skill && top + 300 < project) {
       $(".nav_item").removeClass("active animated flipInX");
       $(".nav_skill").addClass("active animated flipInX");
     }
+    else if (top + 300 >= project) {
+      $(".nav_item").removeClass("active animated flipInX");
+      $(".nav_project").addClass("active animated flipInX");
+    }
     // For Main
-    if (top >= 0  && top+300 < about) {
+    if (top >= 0 && top + 300 < about) {
       addHome();
       removeResume();
       removeAboutLeft();
       removeAboutRight();
     }//- about / 2 = 50% view height
-    else if (top+300 >= about && top+300 < resume) {
+    else if (top + 300 >= about && top + 300 < resume) {
       removeHome();
       removeResume();
       addAboutLeft();
-      if ($(window).width() < 768){
-        if(top >= about - about / 2 + 504)
+      if ($(window).width() < 768) {
+        if (top >= about - about / 2 + 504)
           addAboutRight();
       }
-      else{
+      else {
         addAboutRight();
-      } 
+      }
     }
-    else if(top+300 >= resume && top+300 < skill){
+    else if (top + 300 >= resume && top + 300 < skill) {
       removeAboutLeft();
       removeAboutRight();
       removeSkill();
       addResumneiden();
-
+      resetSkill();
     }
-    else if(top+300 >= skill){
-      console.log('here')
+    else if (top + 300 >= skill && top + 300 < project) {
       removeResume();
       addSkillZoom();
+      animateSkill();
+    }
+    else if (top + 300 >= project) {
+      removeSkill();
+      resetSkill();
     }
   }
-  function addResumneiden(){
-    let arrClass = [".edu_title", ".first",".second",".hob_title",".hob_first",".hob_second",".hob_third"]
-    for(let i=0;i<7;i++){
-      timeOut(addResume,arrClass[i],i*400);
+  function addResumneiden() {
+    let arrClass = [".edu_title", ".first", ".second", ".hob_title", ".hob_first", ".hob_second", ".hob_third"]
+    for (let i = 0; i < 7; i++) {
+      timeOut(addResume, arrClass[i], i * 400);
     }
   }
-  function addSkillZoom(){
-    let arrClass = [".skill1",".skill2",".skill3",".skill4",".skill5"];
-    for(let i=0;i<5;i++){
-      timeOut(addSkill,arrClass[i],i*400);
+  function addSkillZoom() {
+    let arrClass = [".skill1", ".skill2", ".skill3", ".skill4", ".skill5"];
+    for (let i = 0; i < 5; i++) {
+      timeOut(addSkill, arrClass[i], i * 200);
     }
   }
-  async function timeOut(fc,a,b) {
+  async function timeOut(fc, a, b) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         fc(a);
@@ -151,16 +164,33 @@ $(document).ready(function () {
   function removeAboutRight() {
     $(".txt-info").removeClass("animated fadeInRight");
   }
-  function addResume(addClass){
+  function addResume(addClass) {
     $(addClass).addClass("animated fadeInUp");
   }
-  function removeResume(){
+  function removeResume() {
     $(".ani_item").removeClass("animated fadeInUp");
   }
-  function addSkill(addClass){
+  function addSkill(addClass) {
     $(addClass).addClass("animated zoomIn");
   }
-  function removeSkill(){
+  function removeSkill() {
     $(".card").removeClass("animated zoomIn");
+  }
+  function animateSkill(){
+    $(".skill .card:nth-child(1) svg circle:nth-child(2)").css("stroke-dashoffset",caclpt(90));
+    $(".skill .card:nth-child(2) svg circle:nth-child(2)").css("stroke-dashoffset",caclpt(85));
+    $(".skill .card:nth-child(3) svg circle:nth-child(2)").css("stroke-dashoffset",caclpt(60));
+    $(".skill_ad .card:nth-child(1) svg circle:nth-child(2)").css("stroke-dashoffset",caclpt(50));
+    $(".skill_ad .card:nth-child(2) svg circle:nth-child(2)").css("stroke-dashoffset",caclpt(50));
+  }
+  function resetSkill(){
+    $(".skill .card:nth-child(1) svg circle:nth-child(2)").css("stroke-dashoffset",caclpt(0));
+    $(".skill .card:nth-child(2) svg circle:nth-child(2)").css("stroke-dashoffset",caclpt(0));
+    $(".skill .card:nth-child(3) svg circle:nth-child(2)").css("stroke-dashoffset",caclpt(0));
+    $(".skill_ad .card:nth-child(1) svg circle:nth-child(2)").css("stroke-dashoffset",caclpt(0));
+    $(".skill_ad .card:nth-child(2) svg circle:nth-child(2)").css("stroke-dashoffset",caclpt(0));
+  }
+  function caclpt(value){
+    return 440 - (440 * value/ 100)
   }
 });
